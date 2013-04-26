@@ -18,6 +18,7 @@
 		A03546D5172AA1ED00164532 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A03546D4172AA1ED00164532 /* Default-568h@2x.png */; };
 		A03546D8172AA1ED00164532 /* PARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03546D7172AA1ED00164532 /* PARViewController.m */; };
 		A03546DB172AA1ED00164532 /* PARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A03546D9172AA1ED00164532 /* PARViewController.xib */; };
+		A03546E4172AA28000164532 /* PARStorageHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A03546E3172AA28000164532 /* PARStorageHelpers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		A03546D6172AA1ED00164532 /* PARViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PARViewController.h; sourceTree = "<group>"; };
 		A03546D7172AA1ED00164532 /* PARViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PARViewController.m; sourceTree = "<group>"; };
 		A03546DA172AA1ED00164532 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PARViewController.xib; sourceTree = "<group>"; };
+		A03546E2172AA28000164532 /* PARStorageHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARStorageHelpers.h; sourceTree = "<group>"; };
+		A03546E3172AA28000164532 /* PARStorageHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PARStorageHelpers.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,7 @@
 		A03546B2172AA1EC00164532 = {
 			isa = PBXGroup;
 			children = (
+				A03546E1172AA26D00164532 /* Storage Helpers */,
 				A03546C4172AA1ED00164532 /* PARStorageHelpers */,
 				A03546BD172AA1ED00164532 /* Frameworks */,
 				A03546BC172AA1ED00164532 /* Products */,
@@ -105,6 +109,15 @@
 				A03546D4172AA1ED00164532 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A03546E1172AA26D00164532 /* Storage Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A03546E2172AA28000164532 /* PARStorageHelpers.h */,
+				A03546E3172AA28000164532 /* PARStorageHelpers.m */,
+			);
+			name = "Storage Helpers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +190,7 @@
 				A03546CB172AA1ED00164532 /* main.m in Sources */,
 				A03546CF172AA1ED00164532 /* PARAppDelegate.m in Sources */,
 				A03546D8172AA1ED00164532 /* PARViewController.m in Sources */,
+				A03546E4172AA28000164532 /* PARStorageHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +313,7 @@
 				A03546E0172AA1ED00164532 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
