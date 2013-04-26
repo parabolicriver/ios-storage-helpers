@@ -9,7 +9,8 @@
 #import "PARStorageHelpers.h"
 
 // default file names
-
+#define kDataFilePath   @"par_user.data"
+#define kDataKey        @"par_data_key"
 
 @implementation PARStorageHelpers
 

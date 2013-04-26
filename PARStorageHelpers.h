@@ -12,17 +12,22 @@
 // state serialization to disk.
 @interface PARStorageHelpers : NSObject
 
-+ (NSString *)dataFilePath;                                             // returns the default storage path
+// returns the default storage path
++ (NSString *)dataFilePath;
 
-+ (BOOL)existsOnDisk;                                                   // data exists at the default storage path or not
-+ (BOOL)existsOnDisk:(NSString *)path;                                  // data exists at the specified path or not
+// data exists at the default storage path or not
++ (BOOL)existsOnDisk;
+// data exists at the specified path or not
++ (BOOL)existsOnDisk:(NSString *)path;
 
-+ (BOOL)writeToDisk:(id<NSCoding>)data;                                 // write to default path atomically
-+ (BOOL)writeToDisk:(id<NSCoding>)data atLocation:(NSString *)path;     // write to specified path atomically
+// write to default path atomically
++ (BOOL)writeToDisk:(id<NSCoding>)data;
+// write to specified path atomically with given key
++ (BOOL)writeToDisk:(id<NSCoding>)data atLocation:(NSString *)path forKey:(NSString *)key;
 
-+ (id<NSCoding>)readFromDisk;                                           // read data from the default path, returns nil
-                                                                        // when there is no data
-+ (id<NSCoding>)readFromDiskAtLocation:(NSString *)path;                // read data from specified path, returns nil when
-                                                                        // when there is no data
+// read data from the default path, returns nil when there is no data
++ (id<NSCoding>)readFromDisk;
+// read data from specified path, returns nil when there is no data
++ (id<NSCoding>)readFromDiskAtLocation:(NSString *)path forKey:(NSString *)key;
 
 @end
