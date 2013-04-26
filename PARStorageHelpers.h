@@ -15,15 +15,18 @@
 // returns the default storage path
 + (NSString *)dataFilePath;
 
+// path for file name in the documents folder
++ (NSString *)pathForFileName:(NSString *)fileName;
+
 // data exists at the default storage path or not
 + (BOOL)existsOnDisk;
 // data exists at the specified path or not
-+ (BOOL)existsOnDisk:(NSString *)path;
++ (BOOL)existsOnDiskAtLocation:(NSString *)path;
 
 // write to default path atomically
-+ (BOOL)writeToDisk:(id<NSCoding>)data;
++ (BOOL)writeToDisk:(id<NSCoding>)userData;
 // write to specified path atomically with given key
-+ (BOOL)writeToDisk:(id<NSCoding>)data atLocation:(NSString *)path forKey:(NSString *)key;
++ (BOOL)writeToDisk:(id<NSCoding>)userData atLocation:(NSString *)path forKey:(NSString *)key;
 
 // read data from the default path, returns nil when there is no data
 + (id<NSCoding>)readFromDisk;
