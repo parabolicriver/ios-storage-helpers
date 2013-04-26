@@ -39,6 +39,10 @@
     [PARStorageHelpers writeToDisk:page atLocation:[PARStorageHelpers pathForFileName:@"useanyfilenameyouwant"] forKey:@"useakeythatsuniqueinyourcode"];
     PARMusician *pageBackFromDisk = (PARMusician *) [PARStorageHelpers readFromDiskAtLocation:[PARStorageHelpers pathForFileName:@"useanyfilenameyouwant"] forKey:@"useakeythatsuniqueinyourcode"];
     NSLog(@"%@", pageBackFromDisk);
+    
+    // at this point both data should simultaneously exist
+    PARMusician *ed2 = (PARMusician *) [PARStorageHelpers readFromDisk];
+    NSLog(@"%@", ed2);
 }
 
 - (void)didReceiveMemoryWarning
