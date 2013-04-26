@@ -8,6 +8,9 @@
 
 #import "PARViewController.h"
 
+#import "PARMusician.h"
+#import "PARStorageHelpers.h"
+
 @interface PARViewController ()
 
 @end
@@ -18,6 +21,24 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    PARMusician *eddie = [[PARMusician alloc] init];
+    eddie.name = @"Eddie Vedder";
+    eddie.about = @"All around awesomeness.";
+    
+    PARMusician *page = [[PARMusician alloc] init];
+    page.name = @"Jimmy Page";
+    page.about = @"The look on their faces when he starts whole lotta love hahaha.";
+    
+    // default path test
+    [PARStorageHelpers writeToDisk:eddie];
+    PARMusician *eddieBackFromDisk = (PARMusician *) [PARStorageHelpers readFromDisk];
+    NSLog(@"%@", eddieBackFromDisk);
+    
+    // custom path test
+    [PARStorageHelpers writeToDisk:page atLocation:@"useanyfilenameyouwant" forKey:@"useakeythatsuniqueinyourcode"];
+    PARMusician *pageBackFromDisk = (PARMusician *) [PARStorageHelpers readFromDiskAtLocation:@"useanyfilenameyouwant" forKey:@"useakeythatsuniqueinyourcode"];
+    NSLog(@"%@", pageBackFromDisk);
 }
 
 - (void)didReceiveMemoryWarning
