@@ -19,6 +19,7 @@
 		A03546D8172AA1ED00164532 /* PARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03546D7172AA1ED00164532 /* PARViewController.m */; };
 		A03546DB172AA1ED00164532 /* PARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A03546D9172AA1ED00164532 /* PARViewController.xib */; };
 		A03546E4172AA28000164532 /* PARStorageHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A03546E3172AA28000164532 /* PARStorageHelpers.m */; };
+		A03546E7172AAC5800164532 /* PARMusician.m in Sources */ = {isa = PBXBuildFile; fileRef = A03546E6172AAC5800164532 /* PARMusician.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		A03546DA172AA1ED00164532 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PARViewController.xib; sourceTree = "<group>"; };
 		A03546E2172AA28000164532 /* PARStorageHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARStorageHelpers.h; sourceTree = "<group>"; };
 		A03546E3172AA28000164532 /* PARStorageHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PARStorageHelpers.m; sourceTree = "<group>"; };
+		A03546E5172AAC5800164532 /* PARMusician.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARMusician.h; sourceTree = "<group>"; };
+		A03546E6172AAC5800164532 /* PARMusician.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PARMusician.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,8 @@
 				A03546D7172AA1ED00164532 /* PARViewController.m */,
 				A03546D9172AA1ED00164532 /* PARViewController.xib */,
 				A03546C5172AA1ED00164532 /* Supporting Files */,
+				A03546E5172AAC5800164532 /* PARMusician.h */,
+				A03546E6172AAC5800164532 /* PARMusician.m */,
 			);
 			path = PARStorageHelpers;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 				A03546CF172AA1ED00164532 /* PARAppDelegate.m in Sources */,
 				A03546D8172AA1ED00164532 /* PARViewController.m in Sources */,
 				A03546E4172AA28000164532 /* PARStorageHelpers.m in Sources */,
+				A03546E7172AAC5800164532 /* PARMusician.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
