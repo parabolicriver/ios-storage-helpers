@@ -36,8 +36,8 @@
     NSLog(@"%@", eddieBackFromDisk);
     
     // custom path test
-    [PARStorageHelpers writeToDisk:page atLocation:@"useanyfilenameyouwant" forKey:@"useakeythatsuniqueinyourcode"];
-    PARMusician *pageBackFromDisk = (PARMusician *) [PARStorageHelpers readFromDiskAtLocation:@"useanyfilenameyouwant" forKey:@"useakeythatsuniqueinyourcode"];
+    [PARStorageHelpers writeToDisk:page atLocation:[PARStorageHelpers pathForFileName:@"useanyfilenameyouwant"] forKey:@"useakeythatsuniqueinyourcode"];
+    PARMusician *pageBackFromDisk = (PARMusician *) [PARStorageHelpers readFromDiskAtLocation:[PARStorageHelpers pathForFileName:@"useanyfilenameyouwant"] forKey:@"useakeythatsuniqueinyourcode"];
     NSLog(@"%@", pageBackFromDisk);
 }
 
