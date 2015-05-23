@@ -49,8 +49,12 @@
 // whether or not this file path (relative) exists inside the app group
 + (BOOL)existsOnDiskAtLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID;
 
-// read and write (atomically) to a path (relative) inside the app group
-+ (BOOL)writeToDisk:(id<NSCoding>)userData atLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID forKey:(NSString *)key;
-+ (id<NSCoding>)readFromDiskAtLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID forKey:(NSString *)key;
+// read and write (co-ordinated) to a path (relative) inside the app group,
+// 'iOS 8.2' and above only, see here
+// https://developer.apple.com/library/ios/technotes/tn2408/_index.html
+//
+// pass nil for the file presenter if you do not need file change notifications
++ (BOOL)writeToDisk:(id<NSCoding>)userData atLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID forKey:(NSString *)key withFilePresenter:(id<NSFilePresenter>)fp;
++ (id<NSCoding>)readFromDiskAtLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID forKey:(NSString *)key withFilePresenter:(id<NSFilePresenter>)fp;
 
 @end

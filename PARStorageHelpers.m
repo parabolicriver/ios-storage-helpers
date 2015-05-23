@@ -130,18 +130,48 @@
     return [self existsOnDiskAtLocation:[self path:path inAppGroupContainer:groupID]];
 }
 
-+ (BOOL)writeToDisk:(id<NSCoding>)userData atLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID forKey:(NSString *)key
++ (BOOL)writeToDisk:(id<NSCoding>)userData atLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID forKey:(NSString *)key withFilePresenter:(id<NSFilePresenter>)fp
 {
-    NSString *writeHere = [self path:path inAppGroupContainer:groupID];
+    NSString *absolutePath = [self path:path inAppGroupContainer:groupID];
     
-    return [self writeToDisk:userData atLocation:writeHere forKey:key];
+    // we don't use or need a file presenter,
+    // since we mostly read and write complete
+    // objects, everything changes or nothing does
+    NSFileCoordinator *fileCoordinator = [[NSFileCoordinator alloc] initWithFilePresenter:fp];
+    __block BOOL writeOk = NO;
+    
+    [fileCoordinator coordinateWritingItemAtURL:[NSURL URLWithString:absolutePath]
+                                        options:0
+                                          error:nil
+                                     byAccessor:
+                                        ^(NSURL *writeHere)
+                                        {
+                                            writeOk = [PARStorageHelpers writeToDisk:userData atLocation:writeHere.path forKey:key];
+                                        }];
+    
+    return writeOk;
 }
 
-+ (id<NSCoding>)readFromDiskAtLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID forKey:(NSString *)key
++ (id<NSCoding>)readFromDiskAtLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID forKey:(NSString *)key withFilePresenter:(id<NSFilePresenter>)fp
 {
-    NSString *readFromHere = [self path:path inAppGroupContainer:groupID];
+    NSString *absolutePath = [self path:path inAppGroupContainer:groupID];
     
-    return [self readFromDiskAtLocation:readFromHere forKey:key];
+    // we don't use or need a file presenter,
+    // since we mostly read and write complete
+    // objects, everything changes or nothing does
+    NSFileCoordinator *fileCoordinator = [[NSFileCoordinator alloc] initWithFilePresenter:fp];
+    __block id<NSCoding> dataFromDisk = nil;
+    
+    [fileCoordinator coordinateReadingItemAtURL:[NSURL URLWithString:absolutePath]
+                                        options:0
+                                          error:nil
+                                     byAccessor:
+                                        ^(NSURL *readFromHere)
+                                        {
+                                            dataFromDisk = [PARStorageHelpers readFromDiskAtLocation:readFromHere.path forKey:key];
+                                        }];
+    
+    return dataFromDisk;
 }
 
 @end
