@@ -14,6 +14,8 @@
 
 @implementation PARStorageHelpers
 
+#pragma mark - App Container Helpers
+
 + (NSString *)dataFilePath
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -88,6 +90,39 @@
     }
     
     return dataFromDisk;
+}
+
+#pragma mark - App Group Shared Container Helpers
+
+// Note:
+// Containers are stored in
+// ~/Library/Group Containers/
+
++ (BOOL)appGroupContainerExists:(NSString *)groupID
+{
+    NSURL *url = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:groupID];
+    
+    if (url)
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }    
+}
+
++ (NSString *)pathForAppGroupContainer:(NSString *)groupID
+{
+    return [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:groupID].path;
+}
+
++ (BOOL)existsOnDiskAtLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID
+{
+    NSString *containerPath = [self pathForAppGroupContainer:groupID];
+    NSString *filePath = [containerPath stringByAppendingPathComponent:path];
+    
+    return [[NSFileManager defaultManager] fileExistsAtPath:filePath];
 }
 
 @end

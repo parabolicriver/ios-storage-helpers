@@ -12,6 +12,8 @@
 // state serialization to disk.
 @interface PARStorageHelpers : NSObject
 
+/* app container helpers */
+
 // returns the default storage path
 + (NSString *)dataFilePath;
 
@@ -32,5 +34,13 @@
 + (id<NSCoding>)readFromDisk;
 // read data from specified path, returns nil when there is no data
 + (id<NSCoding>)readFromDiskAtLocation:(NSString *)path forKey:(NSString *)key;
+
+/* app group shared container helpers */
+
++ (BOOL)appGroupContainerExists:(NSString *)groupID;
++ (NSString *)pathForAppGroupContainer:(NSString *)groupID;
++ (BOOL)existsOnDiskAtLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID;
++ (BOOL)writeToDisk:(id<NSCoding>)userData atLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID forKey:(NSString *)key;
++ (id<NSCoding>)readFromDiskAtLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID forKey:(NSString *)key;
 
 @end
