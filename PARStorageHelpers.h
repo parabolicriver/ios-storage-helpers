@@ -37,9 +37,19 @@
 
 /* app group shared container helpers */
 
+// whether or not the app group was found
 + (BOOL)appGroupContainerExists:(NSString *)groupID;
+
+// path (absolute) for the app group on disk
 + (NSString *)pathForAppGroupContainer:(NSString *)groupID;
+
+// append path (relative) to app group path and return path (absolute)
++ (NSString *)path:(NSString *)path inAppGroupContainer:(NSString *)groupID;
+
+// whether or not this file path (relative) exists inside the app group
 + (BOOL)existsOnDiskAtLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID;
+
+// read and write (atomically) to a path (relative) inside the app group
 + (BOOL)writeToDisk:(id<NSCoding>)userData atLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID forKey:(NSString *)key;
 + (id<NSCoding>)readFromDiskAtLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID forKey:(NSString *)key;
 

@@ -117,12 +117,31 @@
     return [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:groupID].path;
 }
 
-+ (BOOL)existsOnDiskAtLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID
++ (NSString *)path:(NSString *)path inAppGroupContainer:(NSString *)groupID
 {
     NSString *containerPath = [self pathForAppGroupContainer:groupID];
     NSString *filePath = [containerPath stringByAppendingPathComponent:path];
     
-    return [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+    return filePath;
+}
+
++ (BOOL)existsOnDiskAtLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID
+{
+    return [self existsOnDiskAtLocation:[self path:path inAppGroupContainer:groupID]];
+}
+
++ (BOOL)writeToDisk:(id<NSCoding>)userData atLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID forKey:(NSString *)key
+{
+    NSString *writeHere = [self path:path inAppGroupContainer:groupID];
+    
+    return [self writeToDisk:userData atLocation:writeHere forKey:key];
+}
+
++ (id<NSCoding>)readFromDiskAtLocation:(NSString *)path inAppGroupContainer:(NSString *)groupID forKey:(NSString *)key
+{
+    NSString *readFromHere = [self path:path inAppGroupContainer:groupID];
+    
+    return [self readFromDiskAtLocation:readFromHere forKey:key];
 }
 
 @end
